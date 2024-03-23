@@ -12,9 +12,13 @@ namespace RoomRentalManagementSolution.Pages
             _logger = logger;
         }
 
-        public void OnGet()
-        {
+        
+        
+            public IActionResult OnGet()
+            {
+                return new RedirectToPageResult("/Login/Index"); // Replace with your desired path
+            }
+        
 
-        }
     }
 }

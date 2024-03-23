@@ -34,17 +34,14 @@ namespace RoomRentalManagementSolution.Pages.Login
                 return Page();
             }
             else {
-                if(account.Role != "admin")
+                if(account.Role.Equals("staff") && !account.Status)
                 {
-                    TempData["ErrorMessage"] = "Tài khoản không có quyền truy cập!";
+                    TempData["ErrorMessage"] = "Tài khoản không có quyền truy cập";
                     return Page();
                 }
-                else if(account.Role == "admin")
-                {
-                    HttpContext.Session.SetString("username", account.Name);
-                    return RedirectToPage("/Room/Index");
-                }
-                return Page();
+                HttpContext.Session.SetString("role", account.Role);
+                HttpContext.Session.SetString("username", account.Name);
+                return RedirectToPage("/Room/Index");
             }
          
         }

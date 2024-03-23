@@ -1,0 +1,104 @@
+﻿@page
+@model RoomRentalManagementSolution.Pages.Dashboard.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Account List</h1>
+
+@* <p>
+    <a asp-page="Create">Create New</a>
+</p> *@
+<table class="table table-bordered table-dark" aria-label="Account table">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Account[0].Username)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Account[0].Password)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Account[0].Name)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Account[0].Role)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Account[0].Status)
+            </th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Account)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a asp-page="./Edit" class="btn btn-sm btn-outline-light" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" class="btn btn-sm btn-outline-light" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" class="btn btn-sm btn-outline-danger" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .table {
+        width: 100%; /* Ensure full width */
+        border-collapse: collapse; /* Remove default table borders */
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+    }
+
+    .table thead tr th,
+    .table tbody tr td {
+        padding: 0.75rem 1rem; /* Adjust padding as needed */
+        font-weight: normal; /* Natural font weight */
+        color: #f8f9fa; /* Light text color */
+    }
+
+    .table thead tr th {
+        background-color: #343a40; /* Dark header background */
+        text-transform: uppercase; /* All caps for emphasis */
+    }
+
+    .table tbody tr {
+        background-color: #20232a; /* Darker row background */
+    }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #292c33; /* Subtle alternating row background */
+        }
+
+        .table tbody tr:hover {
+            background-color: #1e2127; /* Darker hover effect */
+        }
+
+    .btn-outline-light {
+        border-color: #f8f9fa; /* Light border for buttons */
+        color: #f8f9fa; /* Light text color for buttons */
+        margin-right: 5px; /* Spacing between buttons */
+    }
+
+    .btn-outline-danger {
+        border-color: #dc3545; /* Red border for delete button */
+        color: #dc3545; /* Red text color for delete button */
+    }
+</style>

@@ -44,12 +44,14 @@ namespace RoomRentalManagementSolution.Pages.Customer
                   (string.IsNullOrEmpty(custName) || x.Name.Trim().Contains(custName.Trim()))
                 && (string.IsNullOrEmpty(gender) || x.Sex.Trim().Contains(gender.Trim()))
                 && (string.IsNullOrEmpty(dob) || x.Dob.Date == DateTime.Parse(dob))
-                && (string.IsNullOrEmpty(phone) || x.Phone.ToString().Trim().Contains(phone.Trim()))
+                && (string.IsNullOrEmpty(phone) || x.Phone.Trim().Contains(phone.Trim()))
                 && (string.IsNullOrEmpty(email) || x.Email.Trim().Contains(email.Trim()))
                 && (string.IsNullOrEmpty(address) || x.Address.Trim().Contains(address.Trim()))
                 && (string.IsNullOrEmpty(roomId) || x.RoomId == int.Parse(roomId))
                 ).ToList();
             }
+
+
             var roomOptions = _context.Rooms.Select(a => new SelectListItem { Value = a.RoomId.ToString(), Text = a.RoomName.ToString() }).ToList();
             roomOptions.Insert(0, new SelectListItem { Value = null, Text = "-- Chọn phòng --" });
             ViewData["RoomId"] = new SelectList(roomOptions, "Value", "Text");

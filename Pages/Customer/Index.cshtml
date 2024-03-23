@@ -210,6 +210,7 @@
                         </th>
                         <th></th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -250,6 +251,9 @@
                             </td>
                             <td>
                                 <a asp-page="./Details" asp-route-id="@item.CustomerId">Chi tiết</a>
+                            </td>
+                            <td>
+                                <a asp-page="/Contract/Index" asp-route-id="@item.CustomerId">Hợp đồng</a>
                             </td>
                         </tr>
                     }
